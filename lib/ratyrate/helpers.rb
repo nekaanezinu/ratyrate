@@ -39,8 +39,9 @@ module Helpers
     end
 
     if options[:imdb_avg] && readOnly
-      content_tag :div, '', class: 'imdb-star', :style => "background-image:url('#{image_path('mid-star.png')}');width:61px;height:57px;margin-top:10px;" do
-          content_tag :p, avg, :style => "position:relative;font-size:.8rem;text-align:center;line-height:60px;"
+      content_tag :div, '', class: 'imdb-rating' do
+        content_tag :div, '', class: 'imdb-star', :style => "background-image:url('#{image_path('mid-star.png')}');width:61px;height:57px;margin-top:10px;"
+        content_tag :p, "#{sprintf('%.2f', avg)}/10", class: 'imdb-number', :style => "position:relative;font-size:.8rem;text-align:center;line-height:60px;"
       end
     else
       content_tag :div, '', "data-dimension" => dimension, :class => "star", "data-rating" => avg,
